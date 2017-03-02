@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emoji Picker</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+    <link href="css/main.css" rel="stylesheet">
+
+</head>
+<body>
+
+
+
+<div id="all-container">
+    <div class="row ">
+        <div class="col s8 offset-s2">
+            <ul class="tabs">
+                <li class="tab col s6"><a href="#learn-tab">Learn</a></li>
+                <li class="tab col s6"><a href="#draw-tab">Draw</a></li>
+            </ul>
+        </div>
+        <div class="col m8 offset-m2 " >
+            <div id="learn-tab" class="col m12">
+                <div class="row">
+                    <div class="col s10 offset-s1" id="emojis">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <canvas id="canv" class="col s4 offset-s4" height="200px"></canvas>
+                </div>
+            </div>
+            <div id="draw-tab" class="col m12">Draw</div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+<script src="http://joonku.com/js/machine_learning.min.js"></script>
+
+<script src="js/app.js"></script>
+</body>
+</html>

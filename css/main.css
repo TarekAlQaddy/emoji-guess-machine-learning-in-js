@@ -1,0 +1,27 @@
+body{
+    background: #f0f0f0;
+}
+#all-container{
+    margin-top:100px;
+}
+ul.tabs{
+    text-align: center;
+}
+#learn-tab,#draw-tab{
+    padding: 30px 20px;
+}
+#learn-tab{
+    background-color:#00b8d4 ;
+}
+#draw-tab {
+    background-color: #4a148c;
+}
+
+#canv{
+    border:1px solid #000;
+}
+
+#emojis{
+    background: #fff;
+    height: 250px;
+}
