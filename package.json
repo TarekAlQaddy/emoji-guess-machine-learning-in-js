@@ -1,0 +1,27 @@
+{
+  "name": "emoji-picker-machine-learning-in-javascript",
+  "version": "1.0.0",
+  "description": "a simple paint application to pick the correct emoji by machine learning",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TarekAlQaddy/Emojipicker-machine-learning-in-js.git"
+  },
+  "keywords": [
+    "javascript",
+    "machine",
+    "learning",
+    "ai",
+    "emoji",
+    "picker"
+  ],
+  "author": "tarek alqaddy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TarekAlQaddy/Emojipicker-machine-learning-in-js/issues"
+  },
+  "homepage": "https://github.com/TarekAlQaddy/Emojipicker-machine-learning-in-js#readme"
+}
