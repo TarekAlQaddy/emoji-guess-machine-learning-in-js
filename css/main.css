@@ -2,7 +2,7 @@ body{
     background: #f0f0f0;
 }
 #all-container{
-    margin-top:100px;
+    margin-top:70px;
 }
 ul.tabs{
     text-align: center;
@@ -19,9 +19,24 @@ ul.tabs{
 
 #canv{
     border:1px solid #000;
+    cursor: pointer;
 }
 
 #emojis{
     background: #fff;
     height: 250px;
+}
+
+#emojis-list li{
+    display: inline-block;
+}
+
+#submit-btn{
+    display: block;
+    margin:0 auto;
+    width:130px;
+}
+
+.disabled-emoji{
+    filter: grayscale(100%);
 }
