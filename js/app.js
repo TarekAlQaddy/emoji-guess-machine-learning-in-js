@@ -1,22 +1,28 @@
 /**
  * Created by Tarek AlQaddy on 3/2/2017.
  */
-
-// TODO: make the flow of the app
-//
+$("ul.tabs").tabs();
 
 var canv = document.getElementById("canv"),
     cx = canv.getContext("2d"),
     emojisList = $("#emojis-list li"),
+    btn = document.getElementById("submit-btn"),
     paint = false,
     clickX = [],
     clickY = [],
     clickDrag = [],
-    XYLearn = [],
-    emojiCount = [],
-    selectedEmoji = null;
+    XYTemp = [],
+    XYFinal = [],
+    emojisFinal = [],
+    emojisCount = [],
+    selectedEmoji = null,
+    minTrials = 5;
 
-var emojis = [],emojisData = [];
+var emojis = [],emojisZeros = [];
+
+cx.strokeStyle = "#000";
+cx.lineJoin = "round";
+cx.lineWidth = 7;
 
 function init() {
     for(var i=0; i < emojisList.length ;i++){
@@ -25,28 +31,47 @@ function init() {
         obj.element = emojisList[i];
 
         emojis.push(obj);
-        emojisData.push(0)
+        emojisZeros.push(0);
+    }
+    emojisCount = emojisZeros.slice();
+    for(i=0;i<emojisList.length; i++){
+        var ar = emojisZeros.slice();
+        ar[i] = 1;
+        emojis[i].array = ar;
     }
 }
 
 init();
 
-cx.strokeStyle = "#000";
-cx.lineJoin = "round";
-cx.lineWidth = 7;
 
-$("ul.tabs").tabs();
 
-emojisList.click(function () {
+emojis.forEach(function (v,n) {
+    v.element.addEventListener('click',function () {
+        XYTemp = [];
+        for(var i =0;i<emojisList.length;i++)
+            emojis[i].element.classList.add("disabled-emoji")
+        this.classList.remove("disabled-emoji");
 
-    for(var i=0;i<emojisList.length;i++) {
-        emojisList[i].classList.add('disabled-emoji');
-    }
-    $(this).removeClass("disabled-emoji");
+        selectedEmoji = n;
 
-    //TODO set selected emoji to this element
+        if(emojisCount[selectedEmoji] <= minTrials)
+            btn.classList.add("disabled");
+        else if(btn.classList.contains("disabled"))
+            btn.classList.remove("disabled")
 
+    })
 });
+
+
+
+
+function deselect() {
+    emojis.forEach(function (v) {
+        console.log(v);
+        v.element.classList.remove("disabled-emoji");
+    });
+    selectedEmoji = null;
+}
 
 
 canv.addEventListener("mousedown",function (e) {
@@ -66,12 +91,14 @@ canv.addEventListener("mousemove",function (e) {
 canv.addEventListener("mouseup",function (e) {
     if(paint) {
         paint = false;
+        cx.clearRect(0,0,cx.canvas.width,cx.canvas.height);
         sendDraw();
     }
 });
 canv.addEventListener("mouseleave",function (e) {
     if(paint) {
         paint = false;
+        cx.clearRect(0,0,cx.canvas.width,cx.canvas.height);
         sendDraw();
     }
 });
@@ -103,15 +130,47 @@ function sendDraw() {
 
     var XYSet = [];
 
-    for(var i=0;i<clickX.length;i+=n){//TODO: make it a ratio 0=>1
-        XYSet.push(clickX[i]);
-        XYSet.push(clickY[i]);
+    for(var i=0;i<clickX.length;i+=n){
+        XYSet.push((clickX[i]/cx.canvas.width).toFixed(2));
+        XYSet.push((clickY[i]/cx.canvas.height).toFixed(2));
     }
 
-    console.log(XYSet.length);
+    if(XYSet.length !== 18) {
+        return;
+    }
 
-    if(XYSet.length !== 18){}
-        //TODO error
+    XYTemp.push(XYSet);
 
-    XYLearn.push(XYSet);
+    if(++emojisCount[selectedEmoji] > 5 && btn.classList.contains("disabled")){
+        btn.classList.remove("disabled")
+    }
 }
+
+function submitEmoji(){
+
+
+    if(selectedEmoji || Object.is(selectedEmoji,0)) {
+        XYTemp.forEach(function (v) {
+            XYFinal.push(v);
+        });
+
+        for (var i = 0; i < XYTemp.length; i++) {
+            emojisFinal.push(emojis[selectedEmoji].array.slice());
+        }
+
+        XYTemp = [];
+
+        deselect();
+
+        btn.classList.add("disabled");
+
+        message("Success",3,"green");
+    }
+}
+
+
+function message(msg,sec,style) {
+    Materialize.toast(msg,sec*1000,style);
+}
+
+

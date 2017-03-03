@@ -26,17 +26,17 @@
                 <div class="row">
                     <div class="col s10 offset-s1" id="emojis">
                         <ul id="emojis-list">
-                            <li id="happy"><img src="images/happy.png" ></li>
-                            <li id="sad"><img src="images/sad.png" ></li>
-                            <li id="silly"><img src="images/silly.png" ></li>
-                            <li id="tear"><img src="images/tear.png" ></li>
+                            <li id="happy" data-number="0"><img src="images/happy.png" ></li>
+                            <li id="sad" data-number="1"><img src="images/sad.png" ></li>
+                            <li id="silly" data-number="2"><img src="images/silly.png" ></li>
+                            <li id="tear" data-number="3"><img src="images/tear.png" ></li>
                         </ul>
                     </div>
                 </div>
                 <div class="row">
                     <canvas id="canv" class="col s4 offset-s4" height="200px"></canvas>
                 </div>
-                <a class="btn disabled" id="submit-btn">Submit</a>
+                <a class="btn disabled" id="submit-btn" onclick="submitEmoji()">Submit</a>
             </div>
             <div id="draw-tab" class="col m12">Draw</div>
         </div>
