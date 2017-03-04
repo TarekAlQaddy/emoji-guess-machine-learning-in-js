@@ -2,33 +2,38 @@ body{
     background: #f0f0f0;
 }
 #all-container{
-    margin-top:70px;
+    margin-top:40px;
 }
 ul.tabs{
     text-align: center;
 }
 #learn-tab,#draw-tab{
     padding: 30px 20px;
+    margin-top: -2px;
 }
 #learn-tab{
-    background-color:#00b8d4 ;
+    background-color:#fff ;
 }
 #draw-tab {
-    background-color: #4a148c;
 }
 
 #canv{
-    border:1px solid #000;
     cursor: pointer;
+    background: url("../images/grid.png");
+    background-size: contain;
 }
 
 #emojis{
-    background: #fff;
+    background: #f9f9f9;
     height: 250px;
 }
 
 #emojis-list li{
     display: inline-block;
+    transition:all 0.2s;
+}
+#emojis-list li:hover{
+    transform: scale(1.1);
 }
 
 #submit-btn{

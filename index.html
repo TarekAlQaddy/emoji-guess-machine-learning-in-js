@@ -16,15 +16,15 @@
 <div id="all-container">
     <div class="row ">
         <div class="col s8 offset-s2">
-            <ul class="tabs">
+            <ul class="tabs z-depth-1">
                 <li class="tab col s6"><a href="#learn-tab">Learn</a></li>
                 <li class="tab col s6"><a href="#draw-tab">Draw</a></li>
             </ul>
         </div>
         <div class="col m8 offset-m2 " >
-            <div id="learn-tab" class="col m12">
+            <div id="learn-tab" class="col m12 z-depth-2">
                 <div class="row">
-                    <div class="col s10 offset-s1" id="emojis">
+                    <div class="col s10 offset-s1 hoverable z-depth-1 tooltipped" id="emojis" data-tooltip="Pick an Emoji" data-position="left" data-delay="50">
                         <ul id="emojis-list">
                             <li id="happy" data-number="0"><img src="images/happy.png" ></li>
                             <li id="sad" data-number="1"><img src="images/sad.png" ></li>
@@ -34,11 +34,14 @@
                     </div>
                 </div>
                 <div class="row">
-                    <canvas id="canv" class="col s4 offset-s4" height="200px"></canvas>
+                    <canvas id="canv" class="col s4 offset-s4 hoverable z-depth-1 tooltipped" height="200px" data-tooltip="Draw it a couple of times" data-position="left" data-delay="50"></canvas>
                 </div>
-                <a class="btn disabled" id="submit-btn" onclick="submitEmoji()">Submit</a>
+                <a class="btn waves-effect waves-light disabled" id="submit-btn" onclick="submitEmoji()">Submit</a>
             </div>
-            <div id="draw-tab" class="col m12">Draw</div>
+            <div id="draw-tab" class="col m12">
+                <canvas id="canv2" class="col s4 offset-s4 hoverable z-depth-1 tooltipped" height="200px" data-tooltip="Draw it a couple of times" data-position="left" data-delay="50"></canvas>
+
+            </div>
         </div>
     </div>
 </div>

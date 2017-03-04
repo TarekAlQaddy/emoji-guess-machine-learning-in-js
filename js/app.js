@@ -67,7 +67,6 @@ emojis.forEach(function (v,n) {
 
 function deselect() {
     emojis.forEach(function (v) {
-        console.log(v);
         v.element.classList.remove("disabled-emoji");
     });
     selectedEmoji = null;
@@ -131,8 +130,8 @@ function sendDraw() {
     var XYSet = [];
 
     for(var i=0;i<clickX.length;i+=n){
-        XYSet.push((clickX[i]/cx.canvas.width).toFixed(2));
-        XYSet.push((clickY[i]/cx.canvas.height).toFixed(2));
+        XYSet.push(Number((clickX[i]/cx.canvas.width).toFixed(2)));
+        XYSet.push(Number((clickY[i]/cx.canvas.height).toFixed(2)));
     }
 
     if(XYSet.length !== 18) {
@@ -144,6 +143,9 @@ function sendDraw() {
     if(++emojisCount[selectedEmoji] > 5 && btn.classList.contains("disabled")){
         btn.classList.remove("disabled")
     }
+
+    clickX = [];
+    clickY = [];
 }
 
 function submitEmoji(){
