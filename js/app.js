@@ -1,6 +1,8 @@
 /**
  * Created by Tarek AlQaddy on 3/2/2017.
  */
+// TODO: introjs.onexit(caalback) => disable the app unless exit
+introJs().start();
 $("ul.tabs").tabs();
 
 var canv = document.getElementById("canv"),
@@ -16,7 +18,7 @@ var canv = document.getElementById("canv"),
     emojisFinal = [],
     emojisCount = [],
     selectedEmoji = null,
-    minTrials = 5;
+    minTrials = 4;
 
 var emojis = [],emojisZeros = [];
 

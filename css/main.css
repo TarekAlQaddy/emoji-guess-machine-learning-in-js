@@ -14,8 +14,6 @@ ul.tabs{
 #learn-tab{
     background-color:#fff ;
 }
-#draw-tab {
-}
 
 #canv{
     cursor: pointer;
@@ -26,14 +24,22 @@ ul.tabs{
 #emojis{
     background: #f9f9f9;
     height: 250px;
+    overflow: auto;
 }
 
 #emojis-list li{
     display: inline-block;
+    -webkit-transition:all 0.2s;
     transition:all 0.2s;
 }
 #emojis-list li:hover{
+    -webkit-transform: scale(1.1);
     transform: scale(1.1);
+}
+
+#emojis-list li img{
+    width:100px;
+    height: 100px;
 }
 
 #submit-btn{
