@@ -12,6 +12,7 @@ var canv = document.getElementById("canv"),
     emojisList = $("#emojis-list li"),
     btn = document.getElementById("submit-btn"),
     dTab = document.getElementById('draw'),
+    predictImg = document.getElementById("predict-img"),
     paint = false,
     clickX = [],
     clickY = [],
@@ -38,6 +39,7 @@ cx2.lineWidth = 7;
         var obj = {};
         obj.name = emojisList[i].id;
         obj.element = emojisList[i];
+        obj.imgSrc = emojisList[i].children[0].src;
 
         emojis.push(obj);
         emojisZeros.push(0);
@@ -211,7 +213,7 @@ function learnProcess(){
 
     classifier.train({
         'lr': .06,
-        'epochs': 20000
+        'epochs': 10000
     });
 }
 
@@ -262,9 +264,41 @@ function getPoints(){
     clickY = [];
 
     if(XYSet.length !== 18) {
-        message("Ops..something went wrong",3,'red');
+        message("Please be gentle",3,'red');
         return;
     }
-    console.log(predict(XYSet)[0]);
+    try {
+        var chosen = convertResults(predict(XYSet)[0]).indexOf(1);
+    }
+    catch (e){
+        console.log(e);
+    }
+
+    emojiAppearAnimation(chosen);
+
+}
+
+function convertResults(ar) {
+    for(var i=0;i<ar.length;i++){
+        if(ar[i] > 0.6 )
+            ar[i] = 1;
+        else if(ar[i] < 0.4)
+            ar[i] = 0;
+        else{
+            message('Not sure about it',3,"red");
+            return;
+        }
+    }
+    return ar;
+}
+
+function emojiAppearAnimation(chosen) {
+    predictImg.src = emojis[chosen].imgSrc;
+    predictImg.classList.add("start-anim");
+
+    setTimeout(function () {
+        predictImg.classList.remove("start-anim");
+        predictImg.src = "";
+    },1000)
 
 }

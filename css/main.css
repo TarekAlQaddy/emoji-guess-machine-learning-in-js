@@ -18,7 +18,6 @@ ul.tabs{
 #canv,#canv2{
     cursor: pointer;
     background: url("../images/crossword.png");
-    box-shadow : 0 0 8px 0 rgba(50,50,50,1) inset;
 }
 
 #emojis{
@@ -59,7 +58,7 @@ ul.tabs{
     margin-top: 20px;
 }
 
-#predict-img{
+#predict-img-div{
     position: absolute;
     top:50%;
     left:50%;
@@ -68,9 +67,35 @@ ul.tabs{
     width:150px;
     height:150px;
 }
-#predict-img img{
+#predict-img{
     width:100%;
     height:100%;
     border:none;
     opacity: 0;
+}
+.start-anim{
+    -webkit-animation:anim 900ms forwards;
+    -o-animation:anim 900ms forwards;
+    animation:anim 900ms forwards;
+}
+
+
+@keyframes anim {
+    0%{
+        opacity: 0;
+        -webkit-transform:scale(0.7);
+        transform:scale(0.7);
+    }
+    75%{
+        opacity: 1;
+        transform: scale(1);
+    }
+    90%{
+        opacity: 1;
+        transform:scale(1);
+    }
+    100%{
+        opacity: 0;
+        transform: scale(0.9);
+    }
 }
