@@ -19,7 +19,7 @@
         <div class="col s8 offset-s2">
             <ul class="tabs z-depth-1">
                 <li class="tab col s6"><a href="#learn-tab">Learn</a></li>
-                <li class="tab col s6" data-intro="this is step 4" data-step="4"><a href="#draw-tab">Draw</a></li>
+                <li class="tab col s6 " data-intro="this is step 4" data-step="4" onclick="learnProcess()" id="draw"><a href="#draw-tab">Draw</a></li>
             </ul>
         </div>
         <div class="col m8 offset-m2 " >
@@ -38,13 +38,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <canvas id="canv" class="col s4 offset-s4 hoverable z-depth-1" height="200px" data-intro="this is step 2: Draw several times" data-step="2" data-position="left"></canvas>
+                    <canvas id="canv" class="col s4 offset-s4" height="200px" data-intro="this is step 2: Draw several times" data-step="2" data-position="left"></canvas>
                 </div>
                 <a class="btn waves-effect waves-light disabled" id="submit-btn" onclick="submitEmoji()" data-intro="this is step 3: Draw several times" data-step="3" data-position="top">Submit</a>
             </div>
             <div id="draw-tab" class="col m12">
-                <canvas id="canv2" class="col s4 offset-s4 hoverable z-depth-1" height="200px" ></canvas>
-
+                <canvas id="canv2" class="col s4 offset-s4 hoverable z-depth-1" height="200px"></canvas>
+                <div id="predict-box"  class="col s6 offset-s3 z-depth-1">
+                    <div id="predict-img"><img></div>
+                </div>
             </div>
         </div>
     </div>
