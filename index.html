@@ -6,26 +6,24 @@
 
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
-    <link href="vendor/css/introjs.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/introjs.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
 
 </head>
 <body>
-
-
 
 <div id="all-container">
     <div class="row ">
         <div class="col s8 offset-s2">
             <ul class="tabs z-depth-1">
                 <li class="tab col s6"><a href="#learn-tab">Learn</a></li>
-                <li class="tab col s6 " data-intro="this is step 4" data-step="4" onclick="learnProcess()" id="draw"><a href="#draw-tab">Draw</a></li>
+                <li class="tab col s6 disabled" data-intro="Finally: Draw your Emoji and let the computer guess it" data-step="5" onclick="learnProcess()" id="draw"><a href="#draw-tab">Draw</a></li>
             </ul>
         </div>
         <div class="col m8 offset-m2 " >
             <div id="learn-tab" class="col m12 z-depth-2">
-                <div class="row">
-                    <div class="col s10 offset-s1 hoverable z-depth-1" id="emojis" data-intro="this is step 1" data-position="left">
+                <div class="row" data-intro="Repeat for another ones" data-step="4">
+                    <div class="col s10 offset-s1 hoverable z-depth-1" id="emojis" data-intro="Select an Emoji to draw" data-step="1" data-position="left">
                         <ul id="emojis-list">
                             <li id="happy" ><img src="images/happy.png" ></li>
                             <li id="smile"><img src="images/smile.png" ></li>
@@ -38,15 +36,17 @@
                     </div>
                 </div>
                 <div class="row">
-                    <canvas id="canv" class="col s4 offset-s4 z-depth-1" height="200px" data-intro="this is step 2: Draw several times" data-step="2" data-position="left"></canvas>
+                    <canvas id="canv" class="col s4 offset-s4 z-depth-1" height="200px" data-intro="Draw it several times until the button is activated" data-step="2" data-position="left"></canvas>
                 </div>
-                <a class="btn waves-effect waves-light disabled" id="submit-btn" onclick="submitEmoji()" data-intro="this is step 3: Draw several times" data-step="3" data-position="top">Submit</a>
+                <a class="btn waves-effect waves-light disabled" id="submit-btn" onclick="submitEmoji()" data-intro="Submit these drawings to that Emoji" data-step="3" data-position="top">Submit</a>
+                <a id="clear-btn" class="btn red waves-effect waves-light" onclick="clearAll()">Clear</a>
             </div>
-            <div id="draw-tab" class="col m12">
+            <div id="draw-tab" class="col m12 z-depth-2">
                 <canvas id="canv2" class="col s4 offset-s4 hoverable z-depth-1" height="200px"></canvas>
                 <div id="predict-box"  class="col s6 offset-s3 z-depth-1">
                     <div id="predict-img-div"><img id="predict-img"></div>
                 </div>
+
             </div>
         </div>
     </div>
@@ -54,14 +54,14 @@
 
 
 
-
-<script src="vendor/js/intro.min.js"></script>
+<!-- use CDN in production -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.4.0/intro.min.js"></script>
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"
         integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
         crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-<script src="http://joonku.com/js/machine_learning.min.js"></script>
+<script src="vendor/js/machine_learning.min.js"></script>
 
 <script src="js/app.js"></script>
 </body>

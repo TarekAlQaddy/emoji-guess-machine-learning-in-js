@@ -1,8 +1,9 @@
 /**
  * Created by Tarek AlQaddy on 3/2/2017.
  */
-// TODO: introjs.onexit(caalback) => disable the app unless exit
-//introJs().start();
+
+introJs().start();
+
 $("ul.tabs").tabs();
 
 var canv = document.getElementById("canv"),
@@ -143,6 +144,7 @@ function sendDraw() {
     clickY = [];
 
     if(XYSet.length !== 18) {
+        message("Please be gentle",3,'red');
         return;
     }
 
@@ -192,6 +194,10 @@ function drawTabEnable(ex) {
         dTab.classList.add('disabled');
 }
 
+function drawTabActive() {
+    return !dTab.classList.contains('disabled');
+}
+
 function btnEnable(ex) {
     if(ex && btn.classList.contains('disabled'))
         btn.classList.remove('disabled');
@@ -202,19 +208,24 @@ function btnEnable(ex) {
 // Draw Part
 
 function learnProcess(){
-    classifier = new ml.LogisticRegression({
-        'input': XYFinal,
-        'label': emojisFinal,
-        'n_in': 18,
-        'n_out': emojisCount.length
-    });
+    if(drawTabActive()){
+        console.log("active");
+        classifier = new ml.LogisticRegression({
+            'input': XYFinal,
+            'label': emojisFinal,
+            'n_in': 18,
+            'n_out': emojisCount.length
+        });
 
-    classifier.set('log level,1');
+        classifier.set('log level,1');
 
-    classifier.train({
-        'lr': .06,
-        'epochs': 10000
-    });
+        classifier.train({
+            'lr': .06,
+            'epochs': 10000
+        });
+    }
+
+
 }
 
 function predict(input) {
@@ -280,7 +291,7 @@ function getPoints(){
 
 function convertResults(ar) {
     for(var i=0;i<ar.length;i++){
-        if(ar[i] > 0.6 )
+        if(ar[i] > 0.65 )
             ar[i] = 1;
         else if(ar[i] < 0.4)
             ar[i] = 0;
@@ -301,4 +312,15 @@ function emojiAppearAnimation(chosen) {
         predictImg.src = "";
     },1000)
 
+}
+
+function clearAll() {
+    XYFinal = [];
+    emojisFinal = [];
+    emojisCount.forEach(function (v,i,ar) {
+        ar[i] = 0;
+    });
+    drawTabEnable(false);
+    deselect();
+    message("Cleared",2,"green")
 }
