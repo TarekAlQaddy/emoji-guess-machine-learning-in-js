@@ -1,5 +1,5 @@
 # Emoji Guess Machine Learning In JS
-Drawing app that guesses the correct emoji by machine learning, You can try it here [Demo](https://tarekalqaddy.github.io/emoji-guess-machine-learning-in-js/)
+Prototype drawing app that guesses the correct emoji by machine learning, You can try it here [Demo](https://tarekalqaddy.github.io/emoji-guess-machine-learning-in-js/)
 
 ## Getting Started
   - Select an emoji 
